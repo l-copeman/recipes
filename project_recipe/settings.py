@@ -91,6 +91,11 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-lcopeman-recipes-5ubabnwpn0s.ws-eu116.gitpod.io",
+    "https://dashboard.heroku.com/apps/recipe-project/deploy/github"
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
