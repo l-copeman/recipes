@@ -4,4 +4,5 @@ from .models import Recipe
 
 class RecipeList(generic.ListView):
     model = Recipe
+    template_name = "recipe_list.html"
 
