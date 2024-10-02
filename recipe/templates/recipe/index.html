@@ -13,7 +13,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <a href="#" class="post-link">
+                            <a href="{% url 'recipe_feature' recipe.slug %}" class="post-link">
                                 <h2 class="card-title text-center">{{ recipe.title }}</h2>
                             </a>
                             <p>{{ recipe.excerpt }}</p>
