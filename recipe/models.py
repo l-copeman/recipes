@@ -1,8 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 STATUS = ((0, "Draft"), (1, "Published"))
+RATING_CHOICES = [
+        (0, '0'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    ]
 
 class Recipe(models.Model):
     title = models.CharField(max_length=300, unique=True, blank=False, null=False )
@@ -24,5 +33,6 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField(max_length=900, blank=False, null=False)
+    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
