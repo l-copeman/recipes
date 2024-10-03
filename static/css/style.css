@@ -1,3 +1,21 @@
 p {
     color: red;
 }
+
+/* Make the whole page a flex container */
+html,
+body {
+    height: 100%;
+}
+
+/* The page content takes up all the space except for the footer */
+.content-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Push the footer to the bottom */
+.bottom {
+    margin-top: auto;
+}
