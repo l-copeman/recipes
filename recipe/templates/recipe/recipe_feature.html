@@ -2,34 +2,57 @@
 {% load static %}
 
 <div class="masthead">
-    <div class="container">
+    <div class="container mt-3">
         <div class="row g-0">
-            <div class="col-md-6 masthead-text">
+            <div class="col-md-6 masthead-text text-center">
                 <!-- Recipe title goes in these h1 tags -->
-                <h1 class="post-title">{{ recipe.title }}</h1>
+                <h1 class="post-title mt-3">{{ recipe.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">Recipe by {{ recipe.author }} | Serves {{ recipe.serves }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/default.jpeg' %}" class="scale" alt="placeholder">
+                <!-- <img src="{% static 'images/default.jpeg' %}" class="scale" alt="placeholder"> -->
+                {% if "placeholder" in recipe.image.url %}
+                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+                {% else %}
+                <img class="card-img-top" src=" {{ recipe.image.url }}" alt="{{ recipe.title }}">
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
+        <div class="col card mb-4  mt-3 left  top bottom">
             <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text">
                     {{ recipe.ingredients | safe }}
                 </p>
-                <p>
-                    {{ recipe.method }}
+            </div>
+            <hr>
+            <div class="card-body">
+                <p class="card-text">
+                    {{ recipe.method | safe }}
                 </p>
             </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-4 card mr-2">
+            <h3 class="text-center">Ingredients</h3>
+            <p>
+                {{ recipe.ingredients | safe }}
+            </p>
+        </div>
+        <div class="col-8">
+            <h3 class="text-center">Method</h3>
+            <p>
+                {{ recipe.method | safe }}
+            </p>
         </div>
     </div>
 </div>
