@@ -6,13 +6,10 @@
   <div class="container mt-3">
     <div class="row g-0">
       <div class="col-md-6 masthead-text text-center">
-        <!-- Recipe title goes in these h1 tags -->
         <h1 class="post-title mt-3">{{ recipe.title }}</h1>
-        <!-- Post author goes before the | the post's created date goes after -->
         <p class="post-subtitle">Recipe by {{ recipe.author }} | Serves {{ recipe.serves }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
-        <!-- <img src="{% static 'images/default.jpeg' %}" class="scale" alt="placeholder"> -->
         {% if "placeholder" in recipe.image.url %}
         <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
         {% else %}
@@ -43,8 +40,6 @@
   <div class="col-md-8 card mb-4  mt-3 ">
     <h3>Comments:</h3>
     <div class="card-body">
-      <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
       {% for comment in comments %}
       <div class="card p-2 comments
           {% if not comment.approved and comment.author == user %}
@@ -68,10 +63,10 @@
         </p>
         {% endif %}
         {% if user.is_authenticated and comment.author == user %}
+        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
         <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
         {% endif %}
       </div>
-      <!-- Our for loop ends here -->
       {% endfor %}
     </div>
   </div>
@@ -90,6 +85,26 @@
       {% else %}
       <p>Please log in to leave a comment</p>
       {% endif %}
+    </div>
+  </div>
+</div>
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your comment?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
     </div>
   </div>
 </div>
