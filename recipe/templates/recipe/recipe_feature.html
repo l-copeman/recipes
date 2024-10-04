@@ -67,6 +67,9 @@
           This comment is awaiting approval
         </p>
         {% endif %}
+        {% if user.is_authenticated and comment.author == user %}
+        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+        {% endif %}
       </div>
       <!-- Our for loop ends here -->
       {% endfor %}
@@ -81,7 +84,7 @@
         {{ comment_form | crispy }}
         {% csrf_token %}
         <p>Posting as: {{ user.username }}</p>
-        <button type="submit" class="btn btn-signup btn-lg" data-bs-toggle="modal"
+        <button type="submit" id="submit/update" class="btn btn-signup btn-lg" data-bs-toggle="modal"
           data-bs-target="#commentModal">Submit</button>
       </form>
       {% else %}
@@ -92,3 +95,7 @@
 </div>
 
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}

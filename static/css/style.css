@@ -19,3 +19,8 @@ body {
 .bottom {
     margin-top: auto;
 }
+
+button {
+    background-color: pink;
+    border: 1px;
+}
