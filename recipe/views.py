@@ -25,7 +25,7 @@ def recipe_feature(request, slug):
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
     comments = recipe.comments.all().order_by("-created_on")
-    comment_form = CommentForm()
+    
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
     if comment_form.is_valid():
@@ -34,6 +34,7 @@ def recipe_feature(request, slug):
         comment.recipe = recipe
         comment.save()
 
+    comment_form = CommentForm()
 
     return render(
         request,

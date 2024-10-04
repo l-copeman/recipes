@@ -46,7 +46,7 @@
       <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
       {% for comment in comments %}
-      <div class="p-2 comments
+      <div class="card p-2 comments
           {% if not comment.approved and comment.author == user %}
           faded{% elif not comment.approved %} d-none{% endif %}">
         <p class="font-weight-bold">
@@ -81,7 +81,8 @@
         {{ comment_form | crispy }}
         {% csrf_token %}
         <p>Posting as: {{ user.username }}</p>
-        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+        <button type="submit" class="btn btn-signup btn-lg" data-bs-toggle="modal"
+          data-bs-target="#commentModal">Submit</button>
       </form>
       {% else %}
       <p>Please log in to leave a comment</p>
