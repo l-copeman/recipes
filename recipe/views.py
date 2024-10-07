@@ -35,6 +35,10 @@ def recipe_feature(request, slug):
             comment.author = request.user
             comment.recipe = recipe
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+    )
 
     comment_form = CommentForm()
 
@@ -63,9 +67,9 @@ def comment_edit(request, slug, comment_id):
             comment.recipe = recipe
             comment.approved = False
             comment.save()
-        #     messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
-        # else:
-        #     messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('recipe_feature', args=[slug]))    
 

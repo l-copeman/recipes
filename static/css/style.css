@@ -1,11 +1,11 @@
-p {
-    color: red;
-}
-
 /* Make the whole page a flex container */
 html,
 body {
     height: 100%;
+}
+
+body {
+    background-color: rgb(236, 189, 189);
 }
 
 /* The page content takes up all the space except for the footer */
@@ -15,11 +15,20 @@ body {
     flex-direction: column;
 }
 
+.base-color {
+    background-color: #C03B30;
+    color: #ffffff
+}
+
+.base-color a {
+    color: #ffffff
+}
+
+.card-body {
+    background-color: rgb(239, 166, 137);
+}
+
 /* Push the footer to the bottom */
 .bottom {
     margin-top: auto;
-}
-
-button {
-    background-color: pink;
 }
