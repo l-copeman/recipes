@@ -22,7 +22,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-4 card mr-2 base-color">
-      <h3 class="text-center">Ingredients</h3>
+      <h3 class="text-center mt-3">Ingredients</h3>
       <p>
         {{ recipe.ingredients | safe }}
       </p>
@@ -44,7 +44,7 @@
       <p>No comments left. Please leave a comment in the comment form</p>
       {% endif %}
       {% for comment in comments %}
-      <div class="card p-2 comments
+      <div class="card p-2 comments card-body
           {% if not comment.approved and comment.author == user %}
           faded{% elif not comment.approved %} d-none{% endif %}">
         <p class="font-weight-bold sm-italic">
@@ -66,7 +66,7 @@
         </p>
         {% endif %}
         {% if user.is_authenticated and comment.author == user %}
-        <div class="row">
+        <div class="row text-end">
           <button class="btn btn-edit button-style" comment_id="{{ comment.id }}">Edit</button>
           <button class="btn btn-delete button-style delete" comment_id="{{ comment.id }}">Delete</button>
         </div>
