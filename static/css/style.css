@@ -26,8 +26,13 @@ body {
     color: #ffffff
 }
 
+.capital {
+    font-weight: bold;
+    font-size: 33px;
+}
+
 .card-body {
-    background-color: rgb(255, 139, 100);
+    background-color: rgb(250, 169, 89);
 }
 
 a {
@@ -65,8 +70,14 @@ a {
 }
 
 .message {
-    background-color: rgb(255, 139, 100) ;
+    background-color: rgb(250, 169, 89) ;
     margin-top: 18px;
+    text-align: center;
+}
+
+.quotes {
+    padding: 9px;
+    font-size: 30px;
 }
 
 .hover {
@@ -76,6 +87,8 @@ a {
 
 .hover:hover {
     opacity: 0.8;
+    text-decoration: underline;
+    text-decoration-color: black;
 }
 
 /* main {
@@ -85,8 +98,13 @@ a {
 /* Push the footer to the bottom */
 .bottom {
     margin-top: auto;
+    width: 100%;
 }
 
 footer {
     bottom: 0;
+}
+
+#id_body {
+    background-color: aqua;
 }
