@@ -11,7 +11,7 @@
             <div class="row">
                 {% for recipe in recipe_list %}
                 <div class="col-md-4">
-                    <a href="{% url 'recipe_feature' recipe.slug %}">
+                    <a href="{% url 'recipe_feature' recipe.slug %}" class="hover">
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h2 class="card-title text-center">{{ recipe.title }}</h2>
@@ -50,11 +50,11 @@
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
         <li>
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link button-style">&laquo; PREV</a>
         </li>
         {% endif %}
         {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link button-style"> NEXT &raquo;</a></li>
         {% endif %}
     </ul>
 </nav>

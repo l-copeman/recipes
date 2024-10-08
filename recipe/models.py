@@ -31,7 +31,7 @@ class Comment(models.Model):
         Recipe, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
-    body = models.TextField(max_length=900, blank=False, null=False)
+    body = models.TextField("Max characters 900", max_length=900, blank=False, null=False)
     rating = models.IntegerField(choices=RATING_CHOICES, default=0)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

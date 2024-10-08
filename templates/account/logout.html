@@ -1,10 +1,14 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
+{% url 'home' as home_url %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
 
 {% block content %}
+<div class="row text-center mt-3">
+  <div class="col-2"></div>
+  <div class="col-8 card card-body account">
 <h1>{% trans "Sign Out" %}</h1>
 
 <p>{% trans 'Are you sure you want to sign out?' %}</p>
@@ -14,8 +18,13 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
   {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
+  <button class="button-style" type="submit">{% trans 'Sign Out' %}</button>
+  <a href="{% url 'home' %}" class="button-style">Cancel</a>
+
 </form>
+</div>
+<div class="col-2"></div>
+</div>
 
 
 {% endblock content %}

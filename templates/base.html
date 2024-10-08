@@ -63,7 +63,6 @@
     <nav class="navbar navbar-expand-md base-color">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">Recipes</a>
-        <p class="text-start">Signed in as {{ user }}</p>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -90,6 +89,9 @@
             {% endif %}
           </ul>
         </div>
+        {% if user.is_authenticated %}
+        <p class="text-start">Signed in as {{ user }}</p>
+        {% endif %}
       </div>
     </nav>
   </header>
@@ -112,7 +114,7 @@
   <!-- Display messages -->
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-2">
+      <div class="col-md-6 offset-md-2 message">
         {% for message in messages %}
         <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
           {{ message | safe }}

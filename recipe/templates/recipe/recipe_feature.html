@@ -21,7 +21,7 @@
 </div>
 <div class="container mt-3">
   <div class="row">
-    <div class="col-md-4 card mr-2">
+    <div class="col-md-4 card mr-2 base-color">
       <h3 class="text-center">Ingredients</h3>
       <p>
         {{ recipe.ingredients | safe }}
@@ -37,7 +37,7 @@
 </div>
 <!-- Displaying Comments -->
 <div class="row">
-  <div class="col-md-8 card mb-4  mt-3 ">
+  <div class="col-md-8 card mb-4  mt-3 ps-3 card-body">
     <h3>Comments:</h3>
     <div class="card-body">
       {% if comments|length == 0 %}
@@ -46,15 +46,15 @@
       {% for comment in comments %}
       <div class="card p-2 comments
           {% if not comment.approved and comment.author == user %}
-          faded{% elif not comment.approved %} d-none{% endif %}">  
-        <p class="font-weight-bold">
+          faded{% elif not comment.approved %} d-none{% endif %}">
+        <p class="font-weight-bold sm-italic">
           {{ comment.author }}
           wrote:
         </p>
         <div id="comment{{ comment.id }}">
           {{ comment.body | linebreaks }}
         </div>
-        <div class="font-weight-normal">
+        <div class="font-weight-normal sm-italic">
           {{ comment.created_on }}
         </div>
         <!-- <div id="rating">
@@ -66,35 +66,34 @@
         </p>
         {% endif %}
         {% if user.is_authenticated and comment.author == user %}
-        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-        <!-- <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button> -->
-        <!-- <button class="btn btn-edit" comment-ed="{{ comment.id }}">Edit</button> -->
+        <div class="row">
+          <button class="btn btn-edit button-style" comment_id="{{ comment.id }}">Edit</button>
+          <button class="btn btn-delete button-style delete" comment_id="{{ comment.id }}">Delete</button>
+        </div>
         {% endif %}
       </div>
       {% endfor %}
     </div>
   </div>
   <!-- Creating New Comments -->
-  <div class="col-md-4 card mb-4 mt-3">
+  <div class="col-md-4 card mb-4 ml-3 mr-3 mt-3 card-body">
     <div class="card-body">
       {% if user.is_authenticated %}
-      <h3>Leave a comment:</h3>
+      <h4>Leave a comment, from {{ user.username }}</h4>
       <form id="comment-form" method="post">
         {{ comment_form | crispy }}
         {% csrf_token %}
-        <p>Posting as: {{ user.username }}</p>
-        <button type="submit" id="submit-update" class="btn btn-signup btn-lg" data-bs-toggle="modal"
+        <button type="submit" id="submit-update" class="btn btn-signup btn-lg button-style" data-bs-toggle="modal"
           data-bs-target="#commentModal">Submit</button>
       </form>
       {% else %}
-      <p>Please log in to leave a comment</p>
+      <p>Please <span><a href="{% url 'account_login' %}">log in</a></span> to leave a comment</p>
       {% endif %}
     </div>
   </div>
 </div>
 <!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<aside class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -105,13 +104,13 @@
         Are you sure you want to delete your comment?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary button-style" data-bs-dismiss="modal">Close</button>
         <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Delete</a>
+          btn-danger button-style delete">Delete</a>
       </div>
     </div>
   </div>
-</div>
+</aside>
 
 {% endblock content %}
 
