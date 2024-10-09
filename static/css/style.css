@@ -69,6 +69,10 @@ a {
     /* max-width: 75%; */
 }
 
+.border {
+    border: 2px solid #000000 ;
+}
+
 .message {
     background-color: rgb(250, 169, 89) ;
     margin-top: 18px;
@@ -91,6 +95,10 @@ a {
     text-decoration-color: black;
 }
 
+.mod-sty {
+    background-color: rgb(252, 190, 128);
+}
+
 /* main {
     height: 100%;
 } */
@@ -106,5 +114,5 @@ footer {
 }
 
 #id_body {
-    background-color: aqua;
+    background-color: rgb(252, 190, 128)
 }

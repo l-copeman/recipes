@@ -39,11 +39,13 @@
     </div>
   </div>
 </div>
+<hr>
 <!-- Displaying Comments -->
 <div class="row">
-  <div class="col-md-8 card mb-4  mt-3 ps-3 card-body">
-    <h3>Comments:</h3>
-    <div class="card-body">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h3 class="text-center">Comments</h3>
+    <div class="card card-body">
       {% if comments|length == 0 %}
       <p>No comments left. Please leave a comment in the comment form</p>
       {% endif %}
@@ -54,37 +56,39 @@
         <p class="font-weight-bold sm-italic">
           {{ comment.author }}
           wrote:
-        </p>
+        </p>     
         <div id="comment{{ comment.id }}">
           {{ comment.body | linebreaks }}
         </div>
         <div class="font-weight-normal sm-italic">
           {{ comment.created_on }}
-        </div>
-        <!-- <div id="rating">
-            {{ comment.rating }}
-          </div> -->
-        {% if not comment.approved and comment.author == user %}
-        <p class="approval">
-          This comment is awaiting approval
-        </p>
-        {% endif %}
-        {% if user.is_authenticated and comment.author == user %}
-        <div class="row text-end">
-          <button class="btn btn-edit button-style" comment_id="{{ comment.id }}">Edit</button>
+          {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-edit button-style ml-5" comment_id="{{ comment.id }}">Edit</button>
           <button class="btn btn-delete button-style delete" comment_id="{{ comment.id }}">Delete</button>
+          {% endif %}
         </div>
-        {% endif %}
+        <div class="row text-end ml-6">       
+          {% if not comment.approved and comment.author == user %}
+          <p class="approval sm-italic">
+            This comment is awaiting approval
+          </p>
+          {% endif %}
+        </div>
       </div>
       {% endfor %}
     </div>
+    <div class="col-md-2"></div>
   </div>
-  <!-- Creating New Comments -->
-  <div class="col-md-4 card mb-4 ml-3 mr-3 mt-3 card-body">
-    <div class="card-body">
+</div>
+<hr>
+<!-- Creating New Comments -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 mb-4 ml-3 mr-3 mt-3">    
       {% if user.is_authenticated %}
-      <h4>Leave a comment, from {{ user.username }}</h4>
-      <form id="comment-form" method="post">
+      <h4 class="text-center">Leave a comment, from {{ user.username }}</h4>
+      <div class="">
+      <form id="comment-form" method="post" class="card card-body">
         {{ comment_form | crispy }}
         {% csrf_token %}
         <button type="submit" id="submit-update" class="btn btn-signup btn-lg button-style" data-bs-toggle="modal"
@@ -95,11 +99,12 @@
       {% endif %}
     </div>
   </div>
+  <div class="col-md-2"></div>
 </div>
 <!-- Delete confirmation modal -->
 <aside class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content mod-sty">
       <div class="modal-header">
         <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
