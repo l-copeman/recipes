@@ -2,7 +2,6 @@ const editButtons = document.getElementsByClassName("btn-edit");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("comment-form");
 const submitButton = document.getElementById("submit-update");
-const focusCursor = document.getElementById("id_body");
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
@@ -22,8 +21,7 @@ for (let button of editButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
-    console.log('test focus');
-    focusCursor.focus();
+    commentText.focus();
     commentText.value = commentContent;
     submitButton.innerText = "Update";
     commentForm.setAttribute("action", `edit_comment/${commentId}`);
