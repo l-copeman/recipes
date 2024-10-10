@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Meta tags for search engines-->
-  <meta name="description" content="A selection of cooking recipes are displayed, with users able to comment">
+  <meta name="description" content="A selection of cooking recipes are shown to try at home, with users able to comment">
   <meta name="keywords" content="cooking, recipes, food, home-cooking, kitchen, cook">
   <meta name="author" content="Lee Copeman">
   <!-- Bootstrap CSS -->
@@ -24,11 +24,11 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <!--Favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static  'favicon/favicon-16x16.png' %}">
   <!--Title-->
-  <title>Recipes At Home</title>
+  <title>{% block title %}Recipes At Home{% endblock %}</title>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse text-end" id="navbarNav">
           <ul class="navbar-nav text-start">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">

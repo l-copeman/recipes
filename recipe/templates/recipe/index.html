@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<!-- Display recipes --> 
+<!-- Display recipes -->
 <section>
     <div class="container-fluid">
         <div class="row">
@@ -19,7 +19,7 @@
                                     <hr>
                                     <p>{{ recipe.excerpt }}</p>
                                     <hr>
-                                    <div class="image-container">
+                                    <div class="image-container image-list">
                                         {% if "placeholder" in recipe.image.url %}
                                         <img class="card-img-top" src="{% static 'images/default.jpg' %}"
                                             alt="placeholder image">
@@ -28,11 +28,12 @@
                                             alt="{{ recipe.title }}">
                                         {% endif %}
                                         <hr>
-                                        <div class="image-flash">
-                                            <p class="text-center">Serves: {{ recipe.serves }}</p>
-                                            <p class="author text-center">Recipe by {{ recipe.author }}</p>
-                                        </div>
                                     </div>
+                                    <div class="image-flash">
+                                        <p class="text-center">Serves: {{ recipe.serves }}</p>
+                                        <p class="author text-center">Recipe by {{ recipe.author }}</p>
+                                    </div>
+
                                 </div>
                             </div>
                         </a>

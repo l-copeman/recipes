@@ -8,14 +8,14 @@
     <div class="container mt-3">
       <div class="row g-0">
         <div class="col-md-6 masthead-text text-center">
-          <h1 class="mt-3">{{ recipe.title }}</h1>
+          <h1 class="mt-5">{{ recipe.title }}</h1>
           <p>Recipe by {{ recipe.author }} | Serves {{ recipe.serves }}</p>
           <div class="mt-8 pr-4">
             <p><span class="quotes text-start"><i class="fa-solid fa-quote-left"></i></span>{{ recipe.excerpt }}<span
                 class="quotes"><i class="fa-solid fa-quote-right"></i></span></p>
           </div>
         </div>
-        <div class="d-none d-md-block col-md-6 masthead-image">
+        <div class="d-none d-md-block col-md-6 masthead-image image-prop">
           {% if "placeholder" in recipe.image.url %}
           <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
           {% else %}
@@ -55,6 +55,8 @@
       <div class="card card-body">
         {% if comments|length == 0 %}
         <p>No comments left. Please leave a comment in the comment form</p>
+        {% elif comments.approved == false %}
+        <p>There are comments awaiting approval, before being shown to all users</p>
         {% endif %}
         {% for comment in comments %}
         <div class="card p-2 comments card-body
@@ -95,7 +97,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 mb-4 ml-3 mr-3 mt-3">
       {% if user.is_authenticated %}
-      <h4 class="text-center">Leave a comment, from {{ user.username }}</h4>
+      <h4 class="text-center">Leave a comment, from {{ user.username }}:</h4>
       <div class="">
         <form id="comment-form" method="post" class="card card-body">
           {{ comment_form | crispy }}

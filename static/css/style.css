@@ -35,30 +35,43 @@ a {
     text-decoration: none;
 }
 
-.img-index{
-    width: 70px;
-    height: 70px;
+/* Images */
+.image-prop {
+    width: 300px;
+    height: 300px;
+    margin-left: 20px;
+    margin-top: 30px;
 }
+
+/* .image-list {
+    max-width: 500px;
+    max-height: 4000px;
+} */
 
 /* Custom styles for buttons */
 .button-style {
+    text-align: center;
     color: #ffffff;
     background-color: #C03B30 ;
-    font-size: 10px;
+    font-size: 14px;
     padding: 5px;
     width: 85px;
     border: 2px solid #000000;
     border-radius: 6px;
 }
 
-.delete {
-    background-color: red;
-    color:#ffffff;
-}
-
 .button-style:hover {
     border: 2px solid #000000;
     color:#000000;
+}
+
+#cancel {
+    width: 100px;
+}
+
+.delete {
+    background-color: red;
+    color:#ffffff;
 }
 
 .sm-italic {
@@ -111,4 +124,29 @@ footer {
 
 #id_body {
     background-color: rgb(252, 190, 128)
+}
+
+/* Media query: tablets and larger (768 and up) */
+@media screen and (min-width: 768px) {
+    .image-list {
+        min-width: 198px;
+        min-height: 198px;
+    }
+}
+
+
+/* Media query: laptops and larger (1024 and up) */
+@media screen and (min-width: 1024px) {
+    .image-prop {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* Media query: Desktops and larger (1366 and up) */
+@media screen and (min-width: 1366px) {
+    .image-prop {
+        width: 500px;
+        height: 500px;
+    }
 }
