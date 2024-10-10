@@ -1,8 +1,6 @@
 /* Google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-
-/* Make the whole page a flex container */
 html,
 body {
     height: 100%;
@@ -12,15 +10,8 @@ body {
     background-color: rgb(255, 188, 81);
     display: flex;
     flex-direction: column;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
-
-/* The page content takes up all the space except for the footer
-.content-wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-} */
 
 .base-color {
     background-color: #C03B30;
@@ -44,29 +35,43 @@ a {
     text-decoration: none;
 }
 
-.img-index{
-    width: 70px;
-    height: 70px;
+/* Images */
+.image-prop {
+    width: 300px;
+    height: 300px;
+    margin-left: 20px;
+    margin-top: 30px;
 }
+
+/* .image-list {
+    max-width: 500px;
+    max-height: 4000px;
+} */
 
 /* Custom styles for buttons */
 .button-style {
+    text-align: center;
     color: #ffffff;
     background-color: #C03B30 ;
+    font-size: 14px;
     padding: 5px;
-    width: 80px;
+    width: 85px;
     border: 2px solid #000000;
     border-radius: 6px;
-}
-
-.delete {
-    background-color: red;
-    color:#ffffff;
 }
 
 .button-style:hover {
     border: 2px solid #000000;
     color:#000000;
+}
+
+#cancel {
+    width: 100px;
+}
+
+.delete {
+    background-color: red;
+    color:#ffffff;
 }
 
 .sm-italic {
@@ -76,7 +81,6 @@ a {
 
 .account {
     height: 100%;
-    /* max-width: 75%; */
 }
 
 .border {
@@ -109,7 +113,6 @@ a {
     background-color: rgb(252, 190, 128);
 }
 
-/* Push the footer to the bottom */
 .bottom {
     margin-top: auto;
     width: 100%;
@@ -121,4 +124,29 @@ footer {
 
 #id_body {
     background-color: rgb(252, 190, 128)
+}
+
+/* Media query: tablets and larger (768 and up) */
+@media screen and (min-width: 768px) {
+    .image-list {
+        min-width: 198px;
+        min-height: 198px;
+    }
+}
+
+
+/* Media query: laptops and larger (1024 and up) */
+@media screen and (min-width: 1024px) {
+    .image-prop {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* Media query: Desktops and larger (1366 and up) */
+@media screen and (min-width: 1366px) {
+    .image-prop {
+        width: 500px;
+        height: 500px;
+    }
 }
