@@ -152,6 +152,10 @@ footer {
     background-color: rgb(252, 190, 128)
 }
 
+#id-remember {
+    display: none;
+}
+
 /* Media query: tablets and larger (768 and up) */
 @media screen and (min-width: 768px) {
     .image-list {
