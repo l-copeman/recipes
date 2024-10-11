@@ -74,6 +74,10 @@ a {
     color:#ffffff;
 }
 
+.italic {
+    font-style: italic;
+}
+
 .sm-italic {
     font-size: small;
     font-style: italic;
@@ -96,6 +100,28 @@ a {
 .quotes {
     padding: 9px;
     font-size: 30px;
+}
+
+/* Social links */
+
+.social {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+}
+
+.social a {
+    display: flex;
+    align-items: center;
+    margin: 0 2rem;
+    color:#ffffff;
+}
+
+.social li {
+    list-style-type: none;
 }
 
 .hover {

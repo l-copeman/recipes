@@ -21,7 +21,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-lcopeman-recipes-5ubabnwpn0s.ws-eu116.gitpod.io', 

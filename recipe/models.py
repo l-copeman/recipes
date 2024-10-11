@@ -13,7 +13,7 @@ RATING_CHOICES = [
     ]
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=300, unique=True, blank=False, null=False )
+    title = models.CharField(max_length=300, unique=True, blank=False, null=False)
     slug = models.SlugField(max_length=300, unique=True)
     image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(

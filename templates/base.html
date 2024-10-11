@@ -12,7 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Meta tags for search engines-->
-  <meta name="description" content="A selection of cooking recipes are shown to try at home, with users able to comment">
+  <meta name="description"
+    content="A selection of cooking recipes are shown to try at home, with users able to comment">
   <meta name="keywords" content="cooking, recipes, food, home-cooking, kitchen, cook">
   <meta name="author" content="Lee Copeman">
   <!-- Bootstrap CSS -->
@@ -43,7 +44,8 @@
         <div class="collapse navbar-collapse text-end" id="navbarNav">
           <ul class="navbar-nav text-start">
             <li class="nav-item">
-              <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                href="{% url 'home' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
@@ -100,24 +102,36 @@
       <div class="row py-4">
         <!-- Column 1 -->
         <div class="col-md-4">
-          <h5>About</h5>
-          <p>About text to go here?</p>
+          <h5 class="text-center">About</h5>
+          <p class="italic">Browse a diverse selection of recipes, giving you ideas you can try at home. </p>
         </div>
         <!-- Column 2 -->
         <div class="col-md-4">
-          <h5>Contact</h5>
-          <p>Email: contact@example.com</p>
-          <p>Phone: +123 456 7890</p>
+          <h5 class="text-center">Social Links</h5>
+          <div class="social">
+            <ul>
+              <li>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener"
+                  aria-label="Visit our Facebook page (opens in new tab)" class="hover"><i class="fa-brands fa-facebook"></i>-Facebook</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/" target="_blank" rel="noopener"
+                  aria-label="Visit our Twitter page (opens in new tab)" class="hover"><i class="fa-brands fa-x-twitter"></i>-X</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener"
+                  aria-label="Visit our Instagram page (opens in new tab)" class="hover"><i class="fa-brands fa-instagram"></i>-Instagram</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- Column 3 -->
-        <div class="col-md-4 text-center py-3">
-          <p>&copy; 2024 Lee Copeman<br><a href="https://github.com/l-copeman" target="_blank" rel="noopener"
+        <div class="col-md-4 text-center">
+          <h5>&copy; 2024 Lee Copeman<br><a href="https://github.com/l-copeman" target="_blank" rel="noopener"
               aria-label="Visit Lee Copeman's GitHub Page (opens in new window)" class="hover"><i
-                class="fa-brands fa-github"></i></a>
-          </p>
+                class="fa-brands fa-github mt-2"></i></a>
+          </h5>
         </div>
-
-
       </div>
     </div>
   </footer>
