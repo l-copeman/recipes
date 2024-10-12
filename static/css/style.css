@@ -176,7 +176,7 @@ footer {
 /* Media query: Desktops and larger (1366 and up) */
 @media screen and (min-width: 1366px) {
     .image-prop {
-        width: 500px;
-        height: 500px;
+        width: 530px;
+        height: 530px;
     }
 }

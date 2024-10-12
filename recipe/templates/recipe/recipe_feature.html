@@ -17,7 +17,7 @@
         </div>
         <div class="d-none d-md-block col-md-6 masthead-image image-prop">
           {% if "placeholder" in recipe.image.url %}
-          <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+          <img class="card-img-top" src="{% static 'images/default.jpeg' %}" alt="placeholder image">
           {% else %}
           <img class="card-img-top" src=" {{ recipe.image.url }}" alt="{{ recipe.title }}">
           {% endif %}

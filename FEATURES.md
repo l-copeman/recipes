@@ -125,7 +125,7 @@ Below each featured recipe there is a comments section. This allows users to lea
   ![Comment Submitted](documentation/features/screenshots/comment-submitted.png)
 - If the form is submitted empty, a validation message is shown:
   ![Form Validation](documentation/features/screenshots/comment-validation.png)
-- When a comment has been left, only the user is able to view the comment
+- When a comment has been left, only the user is able to view the comment until it is approved by admin
 ![Display comment](documentation/features/screenshots/display-comment-wait.png)
   - The author of the comment is shown:
   ![Author](documentation/features/screenshots/user-wrote.png)

@@ -7,7 +7,7 @@ Repository: [GitHub Repo](https://github.com/l-copeman/recipes)
 
 The app is developed by [Lee Copeman](https://github.com/l-copeman).
 
-![Cool School](documentation/features/main-page-2.png)
+![Recipes At Home](documentation/features/screenshots/main-page-2.png)
 
 ## About
 
@@ -88,7 +88,6 @@ The app was developed for users who are looking to cook in the home.
     + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
     + [Heroku](https://id.heroku.com/): the cloud platform used to host the website.
     + [GitHub](https://github.com/): used to host the website's source code.
-    + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.    
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
@@ -100,8 +99,7 @@ The app was developed for users who are looking to cook in the home.
 
 ## FEATURES
 
-Please refer to the [FEATURES.md](documentation/features/FEATURES.md) file for all features-related documentation.
-
+Please refer to the [FEATURES.md](FEATURES.md) file for all features-related documentation.
 
 
 ---
@@ -116,15 +114,14 @@ The central theme of the application is the simplicity of use. Thus, all the com
 
 ### Typography
 
-The main font used in the application is Lato. The use of this font is consistent with the color scheme. Needless to say, the Lato font was chosen due to its readability, which increases user experience.
+The main font used in the application is Nunito Sans. The font-family was chosen due to its readability, which increases user experience.
 
-  ![Typography](documentation/design/lato_400.png)
+  ![Typography](documentation/features/screenshots/nunito-reg.png)
 
-  ![Typography](documentation/design/lato_700.png)
+  ![Typography](documentation/features/screenshots/nunito-italic.png)
 
-  ![Typography](documentation/design/lato_900.png)
+  ![Typography](documentation/features/screenshots/nunito-bold.png)
 
-To emphasize the importance of the text, the font-weight was set to 900. To make the accent on the buttons, the font-weight was set to 700. For the rest of the text, the font-weight was set to 400.
 
 ### Imagery
 
@@ -135,6 +132,13 @@ To emphasize the importance of the text, the font-weight was set to 900. To make
 To generate this particular pattern, I used Contour Line Generator with white background and #93D3FD54 as the color of the lines. 
 
 - Images were downloaded from the [icons8](https://icons8.com/) website only for the home page. However, the original images were changed manually to match the color scheme.
+
+- Crepes ![Crepes Image](https://pixabay.com/photos/pancakes-yummy-dessert-3926009/)
+- Katsu ![Katsu Image](https://www.pexels.com/search/katsu/)
+- Cookie![Cookie Image](https://www.pexels.com/search/choc%20chip%20cookie/)
+- Veggie Chilli![Chilli Image](https://unsplash.com/photos/a-bowl-of-food-VAbBclifmvY)
+- Cheese Straws![Cheese Straw Image](https://www.vecteezy.com/photo/47277296-cheese-sticks-with-herbs-on-a-white-surface)
+- Quiche![Quiche Image](https://www.pexels.com/search/quiche/)
 
 - The main part is allocated to the use of icons from the [font awesome](https://fontawesome.com/) website. The use of icons is essential for the user experience when it comes to multifunctional websites.
 
@@ -164,8 +168,56 @@ To generate this particular pattern, I used Contour Line Generator with white ba
 
 ### Entity-Relationship Diagram
 
-* The ERD was created using 
+* The ERD was created using [Draw.io](https://www.lucidchart.com/).
 
+- [Database Scheme](documentation/diagrams/db_final.pdf)
+
+### Data Modeling
+
+1. **CustomUser**
+
+#### Allauth's User model.
+
+| Name          | Field Type    | Validation |
+| --------------|-------------- | ---------- |
+| UserName      | CharField     |  max_length=50, blank=False, null=True, unique=True    |
+| Email         | EmailField    | max_length=50, unique=True, blank=False, null=False    |
+| First Name    | CharField     | max_length=30, blank=False, null=False    |
+| Last Name     | CharField     | max_length=30, blank=False, null=False    |
+| Phone Number  | CharField     | max_length=30, blank=False, null=False    |
+
+ #### Recipe
+
+| Name          | Field Type    | Validation | Key  |
+| ------------- | ------------- | -------------  | ----------|
+| Title         | CharField     | max_length=300, blank=False, null=False, unique=True    |
+| Slug          | SlugField     | max_length=300, unique=True    |
+| Author        | User Model    |     | ForeignKey
+| Serves        | PositiveInteger Field  | blank=False, null=False    |
+| Ingredients   | TextField     | max_length=900, blank=False, null=False    |
+| Method        | TextField     | max_length=3000, blank=False, null=False    |
+| Created On    | DateTime      | auto_now_add=True    |
+| Status    | IntegerField      | choices=STATUS, default=0    |
+| Excerpt       | TextField     | max_length=900, blank=False, null=False      |
+
+STATUS:
+![Status](documentation/features/screenshots/status.png)
+
+#### Comment
+
+Extends Allauth's User model.
+
+| Name          | Field Type    | Validation | Key
+| ------------- | ------------- | ---------- | --------|
+| Recipe        | Recipe Model     |     | ForeignKey
+| Author        | User Model    |     | ForeignKey
+|  Body         | TextField     | max_length=900, blank=False, null=False    |
+| Rating        | IntegerField     | choices=RATING_CHOICES, default=0    |
+| Approved     | BooleanField     | default=False    |
+| Created On    | DateTimeField  | auto_now_add=True    |
+
+RATING_CHOICES:
+![Rating Choices](documentation/features/screenshots/choices.png)
 
 ### Data Modeling
 
