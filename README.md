@@ -89,11 +89,12 @@ The app was developed for users who are looking to cook in the home.
     + [Heroku](https://id.heroku.com/): the cloud platform used to host the website.
     + [GitHub](https://github.com/): used to host the website's source code.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
-    + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.    
+    + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website. 
+    + [Converio](https://convertio.co/): to convert images to webp format
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
     + [JShint](https://jshint.com/): was used to validate JS code for the website.
-    + [PEP8](https://pep8.org/): was used to validate Python code for the website.
+    + [PEP8](https://pep8ci.herokuapp.com/#): was used to validate Python code for the website.
 
 ---
 
@@ -111,6 +112,17 @@ The central theme of the application is the simplicity of use. Thus, all the com
 
 ### Color Scheme
 
+The chosen color scheme for the project, is a selection of deep reds and oranges. These colors were chosen because of their association with warmness, happiness and enthusiasm. The colors are also very autumnal, which is traditonally harvest time for many people. This helps build a connection between food and the content viewed on the project.
+
+- ![Color](documentation/features/screenshots/color-1.png)
+  - Was used for the body of the project
+- ![Color](documentation/features/screenshots/color-2.png)
+  - Was used for the recipe cards and message section
+- ![Color](documentation/features/screenshots/color-3.png)
+  - Was used for the header/footer and ingredients card
+- ![Color](documentation/features/screenshots/color-5.png)
+  - Was used for the delete modal and text field in the comment form
+
 
 ### Typography
 
@@ -125,37 +137,32 @@ The main font used in the application is Nunito Sans. The font-family was chosen
 
 ### Imagery
 
-- The main background image was generated with the user of the [BGJar](https://www.bgjar.com/) tool. The image was generated with the following settings:
+The images used for the recipes were downloaded from the following sites:
 
-  ![Background](documentation/design/background.svg)
+- [Crepes Image link](https://pixabay.com/photos/pancakes-yummy-dessert-3926009/)
+- [Vegan Katsu Image link](https://www.pexels.com/search/katsu/)
+- [Cookie Image link](https://www.pexels.com/search/choc%20chip%20cookie/)
+- [Vegetarian Chilli Image link](https://unsplash.com/photos/a-bowl-of-food-VAbBclifmvY)
+- [Cheese Straw Image link](https://www.vecteezy.com/photo/47277296-cheese-sticks-with-herbs-on-a-white-surface)
+- [Spinach and Feta Quiche Image link](https://www.pexels.com/search/quiche/)
 
-To generate this particular pattern, I used Contour Line Generator with white background and #93D3FD54 as the color of the lines. 
+Images were converted to `webp` format with Convertio to reduce size and therefore increase load time to improve UX.
 
-- Images were downloaded from the [icons8](https://icons8.com/) website only for the home page. However, the original images were changed manually to match the color scheme.
-
-- Crepes ![Crepes Image](https://pixabay.com/photos/pancakes-yummy-dessert-3926009/)
-- Katsu ![Katsu Image](https://www.pexels.com/search/katsu/)
-- Cookie![Cookie Image](https://www.pexels.com/search/choc%20chip%20cookie/)
-- Veggie Chilli![Chilli Image](https://unsplash.com/photos/a-bowl-of-food-VAbBclifmvY)
-- Cheese Straws![Cheese Straw Image](https://www.vecteezy.com/photo/47277296-cheese-sticks-with-herbs-on-a-white-surface)
-- Quiche![Quiche Image](https://www.pexels.com/search/quiche/)
-
-- The main part is allocated to the use of icons from the [font awesome](https://fontawesome.com/) website. The use of icons is essential for the user experience when it comes to multifunctional websites.
+[Font Awesome](https://fontawesome.com/) was used for the icons in the app.
 
 
 ### Wireframes
 
-- [Desktop Wireframes](documentation/wireframes/pp4_desktop.pdf)
+Wireframes were used to give visual views of how the pages should display the information. These were a first draft, so some stylings and colors are not represented in the finished project.
 
-
-
----
-
-## Flowcharts
-
-
-
-
+- Mobile Phone layout for homepage. 
+  - ![Wireframe for Mobile](documentation/features/screenshots/mobile-layout.png)
+- Laptop layout for homepage. 
+  - ![Wireframe for Laptop](documentation/features/screenshots/laptop-layout.png)
+- Mobile Phone layout for recipe feature. 
+  - ![Mobile Recipe Feature](documentation/features/screenshots/mobile-feature.png)
+- Laptop layout for recipe feature. 
+  - ![Laptop Recipe Feature](documentation/features/screenshots/laptop-feature.png)
 
 ---
 
@@ -163,28 +170,19 @@ To generate this particular pattern, I used Contour Line Generator with white ba
 
 ### Database
 
-* During the earliest stages of the project, the database was created using SQLite.
-* The database was then migrated to PostgreSQL.
+- The database used for the project is PostgreSQL.
 
 ### Entity-Relationship Diagram
-
-* The ERD was created using [Draw.io](https://www.lucidchart.com/).
-
-- [Database Scheme](documentation/diagrams/db_final.pdf)
-
-### Data Modeling
-
-1. **CustomUser**
 
 #### Allauth's User model.
 
 | Name          | Field Type    | Validation |
 | --------------|-------------- | ---------- |
-| UserName      | CharField     |  max_length=50, blank=False, null=True, unique=True    |
-| Email         | EmailField    | max_length=50, unique=True, blank=False, null=False    |
-| First Name    | CharField     | max_length=30, blank=False, null=False    |
-| Last Name     | CharField     | max_length=30, blank=False, null=False    |
-| Phone Number  | CharField     | max_length=30, blank=False, null=False    |
+| UserName      | CharField     |  max_length=150, blank=False, null=True, unique=True    |
+| Email         | EmailField    | max_length=50   |
+| Password      | TextField     | min_length=8, blank=False, null=False    |
+
+---
 
  #### Recipe
 
@@ -201,11 +199,11 @@ To generate this particular pattern, I used Contour Line Generator with white ba
 | Excerpt       | TextField     | max_length=900, blank=False, null=False      |
 
 STATUS:
-![Status](documentation/features/screenshots/status.png)
+  - ![Status](documentation/features/screenshots/status.png)
+
+---
 
 #### Comment
-
-Extends Allauth's User model.
 
 | Name          | Field Type    | Validation | Key
 | ------------- | ------------- | ---------- | --------|
@@ -217,16 +215,12 @@ Extends Allauth's User model.
 | Created On    | DateTimeField  | auto_now_add=True    |
 
 RATING_CHOICES:
-![Rating Choices](documentation/features/screenshots/choices.png)
-
-### Data Modeling
+  - ![Rating Choices](documentation/features/screenshots/choices.png)
 
 ---
 ## Testing
 
 Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
-
-
 
 ---
 
@@ -234,8 +228,6 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 
 
 - The app was deployed to [Heroku](https://id.heroku.com/).
-- The database was deployed to []().
-
 - The app can be reached by the [link]().
 
 Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment-related documentation.

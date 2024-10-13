@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <!-- Display title, author, serves, excerpt and image for recipe -->
-<section>
+<section aria-label="Display recipe title, author, servings, excerpt and image">
   <div class="masthead">
     <div class="container mt-3">
       <div class="row g-0">
@@ -27,27 +27,23 @@
   </div>
 </section>
 <!-- Display ingredients and method for recipe -->
-<section>
+<section aria-label="Dispay ingredients and method for recipe">
   <div class="container mt-3">
     <div class="row">
       <div class="col-md-4 card mr-2 base-color">
         <h3 class="text-center mt-3">Ingredients</h3>
-        <p>
-          {{ recipe.ingredients | safe }}
-        </p>
+        <p>{{ recipe.ingredients | safe }}
       </div>
       <div class="col-md-8">
         <h3 class="text-center mt-3">Method</h3>
-        <p>
-          {{ recipe.method | safe }}
-        </p>
+        <p>{{ recipe.method | safe }}
       </div>
     </div>
   </div>
 </section>
 <hr>
 <!-- Display Comments -->
-<section>
+<section aria-label="Display comments">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -69,11 +65,11 @@
           <div id="comment{{ comment.id }}">
             {{ comment.body | linebreaks }}
           </div>
-          <div class="font-weight-normal sm-italic">
+          <div class="sm-italic">
             {{ comment.created_on }}
             {% if user.is_authenticated and comment.author == user %}
-            <button class="btn btn-edit button-style ml-5" comment_id="{{ comment.id }}">Edit</button>
-            <button class="btn btn-delete button-style delete" comment_id="{{ comment.id }}">Delete</button>
+            <button class="btn edit-button button-style ml-5" data-comment-id="{{ comment.id }}" aria-label="Button to edit comment written by user">Edit</button>
+            <button class="btn delete-button button-style delete" data-comment-id="{{ comment.id }}" aria-label="Button to delete users comment">Delete</button>
             {% endif %}
           </div>
           <div class="row text-end ml-6">
@@ -92,7 +88,7 @@
 </section>
 <hr>
 <!-- Creating New Comments -->
-<section>  
+<section aria-label="leave a comment form">  
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8 mb-4 ml-3 mr-3 mt-3">
@@ -103,10 +99,10 @@
           {{ comment_form | crispy }}
           {% csrf_token %}
           <button type="submit" id="submit-update" class="btn btn-signup btn-lg button-style" data-bs-toggle="modal"
-            data-bs-target="#commentModal">Submit</button>
+            data-bs-target="#commentModal" aria-label="Button to submit comment. Changes to update comment when comment has been edited">Submit</button>
         </form>
         {% else %}
-        <p>Please <span><a href="{% url 'account_login' %}">log in</a></span> to leave a comment</p>
+        <p>Please <span><a href="{% url 'account_login' %}" aria-label="Link to login page">log in</a></span> to leave a comment</p>
         {% endif %}
       </div>
     </div>
@@ -119,15 +115,14 @@
     <div class="modal-content mod-sty">
       <div class="modal-header">
         <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close button"></button>
       </div>
       <div class="modal-body">
         Are you sure you want to delete your comment?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary button-style" data-bs-dismiss="modal">Close</button>
-        <a id="deleteConfirm" href="#" class="btn
-          btn-danger button-style delete">Delete</a>
+        <button type="button" class="btn btn-secondary button-style" data-bs-dismiss="modal" aria-label="Close delete modal. Comment is not deleted and user is returned to page">Close</button>
+        <a id="deleteConfirm" class="btn button-style delete" aria-label="Confirm delete comment. Comment is deleted and user is returned to page">Delete</a>
       </div>
     </div>
   </div>

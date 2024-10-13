@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<!-- index.html content starts here -->
 <!-- Display recipes -->
 <section>
     <div class="container-fluid">
@@ -12,7 +11,7 @@
                 <div class="row">
                     {% for recipe in recipe_list %}
                     <div class="col-md-4">
-                        <a href="{% url 'recipe_feature' recipe.slug %}" class="hover">
+                        <a href="{% url 'recipe_feature' recipe.slug %}" class="hover" aria-label="Link to recipe feature">
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <h2 class="card-title text-center">{{ recipe.title }}</h2>
@@ -25,7 +24,7 @@
                                             alt="placeholder image">
                                         {% else %}
                                         <img class="card-img-top" src=" {{ recipe.image.url }}"
-                                            alt="{{ recipe.title }}">
+                                            alt="{{ recipe.title }} image">
                                         {% endif %}
                                         <hr>
                                     </div>
@@ -47,21 +46,20 @@
     </div>
 </section>
 <!-- Pagination and 'next'/'prev' buttons -->
-<section>
+<section aria-label="Page navigation">
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
+    <nav>
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link mr-2 button-style">&laquo; PREV</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link button-style" aria-label="Link to preivous page">&laquo; PREV</a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link ml-2 button-style"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link button-style" aria-label="Link to next page"> NEXT &raquo;</a></li>
             {% endif %}
         </ul>
     </nav>
 </section>
 {% endif %}
-<!-- index.html content ends here -->
 {% endblock %}

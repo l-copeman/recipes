@@ -12,8 +12,12 @@ RATING_CHOICES = [
         (5, '5'),
     ]
 
+
 class Recipe(models.Model):
-    title = models.CharField(max_length=300, unique=True, blank=False, null=False)
+    """Recipe model"""
+    title = models.CharField(
+        max_length=300, unique=True, blank=False, null=False
+    )
     slug = models.SlugField(max_length=300, unique=True)
     image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(
@@ -26,12 +30,18 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(max_length=900, blank=False, null=False)
 
+
 class Comment(models.Model):
+    """Comment model"""
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, related_name="comments")
+        Recipe, on_delete=models.CASCADE, related_name="comments"
+    )
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="commenter")
-    body = models.TextField("Max characters 900", max_length=900, blank=False, null=False)
+        User, on_delete=models.CASCADE, related_name="commenter"
+    )
+    body = models.TextField(
+        "Max characters 900", max_length=900, blank=False, null=False
+    )
     rating = models.IntegerField(choices=RATING_CHOICES, default=0)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

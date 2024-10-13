@@ -5,14 +5,17 @@ from django.contrib import messages
 from .models import Recipe, Comment
 from .forms import CommentForm
 
+
 class RecipeList(generic.ListView):
+    """Recipe List View"""
     model = Recipe
     template_name = "recipe/index.html"
     paginate_by = 3
 
+
 def recipe_feature(request, slug):
     """
-    Display an individual :model:`recipe.Recipe`.
+    Display an individual recipe:model:`recipe.Recipe`.
 
     **Context**
 
@@ -27,7 +30,7 @@ def recipe_feature(request, slug):
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
     comments = recipe.comments.all().order_by("-created_on")
-    
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -37,8 +40,10 @@ def recipe_feature(request, slug):
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                'Comment submitted and awaiting approval'
-    )
+                'Comment submitted and awaiting approval')
+        else:
+            messages.add_message(
+                request, messages.ERROR, 'Error submitting comment!')
 
     comment_form = CommentForm()
 
@@ -46,14 +51,26 @@ def recipe_feature(request, slug):
         request,
         "recipe/recipe_feature.html",
         {"recipe": recipe,
-        "comments": comments,
-        "comment_form": comment_form,
-        },
+         "comments": comments,
+         "comment_form": comment_form,
+         },
     )
+
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Edit a comment from user :model:`recipe.Comment`.
+
+    **Context**
+
+    ``recipe``
+        An instance of :model:`recipe.Recipe`.
+    ``comment``
+        An instance of :model:`recipe.Comment`.
+
+    **Template:**
+
+    :template:`recipe/recipe_feature.html`
     """
     if request.method == "POST":
 
@@ -69,13 +86,26 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!')
 
-    return HttpResponseRedirect(reverse('recipe_feature', args=[slug]))    
+    return HttpResponseRedirect(reverse('recipe_feature', args=[slug]))
+
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Delete a comment from user :model:`recipe.Comment`.
+
+    **Context**
+
+    ``recipe``
+        An instance of :model:`recipe.Recipe`.
+    ``comment``
+        An instance of :model:`recipe.Comment`.
+
+    **Template:**
+
+    :template:`recipe/recipe_feature.html`
     """
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
@@ -85,6 +115,7 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('recipe_feature', args=[slug]))

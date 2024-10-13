@@ -14,7 +14,7 @@ body {
 }
 
 .base-color {
-    background-color: #C03B30;
+    background-color: rgb(192, 59, 48);
     color: #ffffff
 }
 
@@ -43,10 +43,10 @@ a {
     margin-top: 30px;
 }
 
-/* .image-list {
-    max-width: 500px;
-    max-height: 4000px;
-} */
+.image-list {
+    max-width: 550px;
+    max-height: 450px;
+}
 
 /* Custom styles for buttons */
 .button-style {
@@ -92,7 +92,7 @@ a {
 }
 
 .message {
-    background-color: rgb(250, 169, 89) ;
+    background-color: rgb(250, 169, 89);
     margin-top: 18px;
     text-align: center;
 }
@@ -103,7 +103,6 @@ a {
 }
 
 /* Social links */
-
 .social {
     display: flex;
     justify-content: center;
