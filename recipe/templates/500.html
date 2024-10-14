@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+    <div class="message">
+      <h2 class="text center">Something went wrong. There is an internal sever error!</h2>
+      <a href="{% url 'home' %}" class="hover" aria-label="Link to home page">
+        <h4>Please return to the home page</h4>
+      </a>
+    </div>
+  </section>
+
+{% endblock %}

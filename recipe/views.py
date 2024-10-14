@@ -119,3 +119,11 @@ def comment_delete(request, slug, comment_id):
             request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('recipe_feature', args=[slug]))
+
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def custom_500(request):
+    return render(request, '500.html', status=500 )
