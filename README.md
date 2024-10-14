@@ -1,6 +1,6 @@
 # Recipes At Home
 
-Live Version: [Recipes At Home]()
+Live Version: [Recipes At Home](https://recipe-project-fd6de57f3d06.herokuapp.com/)
 
 
 Repository: [GitHub Repo](https://github.com/l-copeman/recipes)
@@ -11,14 +11,14 @@ The app is developed by [Lee Copeman](https://github.com/l-copeman).
 
 ## About
 
-[Recipes At Home]() is an application displaying a range of recipes. The main goal of this app is to inspire people with their cooking in the home, giving recipes that are easy to follow as well as being delicious. 
+[Recipes At Home](https://recipe-project-fd6de57f3d06.herokuapp.com/) is an application displaying a range of recipes. The main goal of this app is to inspire people with their cooking in the home, giving recipes that are easy to follow as well as being delicious. 
 
 
 ## User Experience Design
 
 ### Strategy
 
-Developed for users who are cooking in the household. The app is designed to be easy to use and intuitive. A selection of recipes are easily viewed, with a title, a short excerpt, the recipe author, servings per recipe and finally an image. An individual recipe can then by viewed, listing the ingrediwents required for the receipe, and easy to follow steps. As a final goal, the app allows users to leave comments regarding their experiences of the recipe.
+Developed for users who are cooking in the household. The app is designed to be easy to use and intuitive. A selection of recipes are easily viewed, with a title, a short excerpt, the recipe author, servings per recipe and finally an image. An individual recipe can then by viewed, listing the ingredients required for the receipe, and easy to follow steps. As a final goal, the app allows users to leave comments regarding their experiences of the recipe.
 
 ### Target Audience
 
@@ -106,9 +106,6 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all features-related doc
 ---
 
 ## Design
-
-The design of the application is based on the Material Design principles.
-The central theme of the application is the simplicity of use. Thus, all the components are designed to be easy to use. The minimalistic approach was used to create something meaningful without moving out of focus. As this application is a multifunctional one and consists of many components, the decision to implement white spaces was made as it helps to create a more pleasant user experience. 
 
 ### Color Scheme
 
@@ -228,14 +225,67 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 
 
 - The app was deployed to [Heroku](https://id.heroku.com/).
-- The app can be reached by the [link]().
+- The app can be reached by the [link](https://recipe-project-fd6de57f3d06.herokuapp.com/).
 
-Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment-related documentation.
+## Heroku Deployment
+
+- Set up a local workspace on your computer for Heroku:
+    - Create a list of requirements that the project needs to run:
+      - type this in the terminal: `pip3 freeze > requirements.txt`
+    - Commit and push the changes to GitHub
+    
+- Go to [www.heroku.com](www.heroku.com) 
+- Log in or create a Heroku account.
+- Create a new app with any unique name <name app>
+- Create a Procfile in your local workplace:
+    
+    This file will will contain the following:
+    ```python
+        web: gunicorn <name app>.wsgi:application
+    ```
+- Commit and push the changes to GitHub.
+- Go to resources in Heroku and search for postgresql. Select Hobby dev - Free and click on the provision button to add it to the project.
+- Go to the settings app in Heroku and go to Config Vars
+- Click on Reveal Config Vars and add the following config variables:
+
+| Key      | Value          |
+|-------------|-------------|
+| DATABASE_URL | ... | 
+| DISABLE_COLLECTSTATIC | 1 |
+| SECRET_KEY | ... |
+| CLOUDINARY_URL | ... |
+
+- Copy the value of DATABASE_URL and input it into the .env file and generate a secret key (you may use [Djecrety](https://djecrety.ir/) for secret key generation).
+- Migrate changes.
+- Set debug to False in settings.py
+- Commit and push the changes to GitHub.
+- Connect your repository to Heroku.
+- Deploy the app to Heroku by clicking "Deploy Branch" button. If you want to enable auto-deployment, click "Enable Automatic Deployment".
+- The deployment process will start.
+- Once deployed, the app can be opened!
+
+**Final Deployment**
+
+* Set debug to False locally + delete DISABLE_COLLECTSTATIC from config vars in Heroku dashboard.
+* Commit and push the changes to GitHub.
+
 
 ---
 
 ## Credits
 
+- [GitHub](https://github.com/) for giving the idea of the project's design.
+- [Django](https://www.djangoproject.com/) for the framework.
+- [Font awesome](https://fontawesome.com/): for the free access to icons.
+- [Heroku](https://www.heroku.com/): for the free hosting of the website.
+- [Icons8](https://icons8.com/): for providing free access to amazing icons and illustrations.
+- [Postgresql](https://www.postgresql.org/): for providing a free database.
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
+- [Favicon Generator. For real.](https://realfavicongenerator.net/): for providing a free platform to generate favicons.
+
 ---
 
 ## Acknowledgments
+
+- Code Institute community and my mentor, Juliia Konovalova for their support and guidance through the project.
+- My partner, Cristina Bonilla, for her continued support enabling me to complete this project.

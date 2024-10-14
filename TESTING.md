@@ -88,7 +88,20 @@ Usability was tested with the below user acceptance testing, sent to new users t
 
 ### Known Bugs
 
+- After a comment has been submitted, if the page refreshes then the comment is resubmitted. I believe this happends because the browser repeats the last POST request when the page is refreshed. I would look to resolve this by redirecting the user to a different URL after the form submission.
+- For moibile screens, when the toggle button is clicked the logo which is in the top-right of the page moves under the toggle button. I would look to resolve this by adjusting the layout of the header with Flex and bootstrap classes.
+
 ### Resolved Bugs
+
+- I used an if statement to leave a message to users if there are no comments currently left. 
+    -![Message Code](documentation/bugs/if-state.png)
+    - This didnt take into account comments which had been left that were awaiting approval. This created an error by not displaying the message even though no comments appeared to be showing.
+    - To resolves this I added an `elif` statement to acknowledge the unapproved comments.
+    -![Message Code](documentation/bugs/elif-state.png)      
+- I was getting an error in the terminal with mixed content, where HTTP content was being loaded over HTTPS. This content was coming from CLoudinary. 
+    - ![Bug Message](documentation/bugs/error-msg.png)
+    - To resolve this I updated the settings file:
+    - ![Update settings](documentation/bugs/settings-update.png)
 
 ---
 
@@ -118,9 +131,9 @@ Usability was tested with the below user acceptance testing, sent to new users t
 
 ### CSS Validation:
 
-- [Full CSS Validation Report](documentation/validation/css_validation.png)
+- [Full CSS Validation Report](documentation/validation/css-validation.png)
 
-- No errors or warnings were found when passing through the official [W3C (Jigsaw)](https://jigsaw.w3.org/css-validator/#validate_by_uri) validator except for the warnings about the use of css root variables and webkits for the box-shadow. However, css code works perfectly on various devices.
+- No errors or warnings were found when passing through the official [W3C (Jigsaw)](https://jigsaw.w3.org/css-validator/#validate_by_uri) validator. This checking was done manually by copying the view page source code and pasting it into the validator.
 
 ### JS Validation:
 
@@ -146,8 +159,33 @@ Usability was tested with the below user acceptance testing, sent to new users t
     - No errors were found when the code was passed through Code Institutes pep8 validator [pep8 validator](). The checking was done manually by copying python code and pasting it into the validator.
 
 ---
+## Lighthouse Report
+
+### Home Page
+
+![Lighthouse Report. Home Page](documentation/lighthouse/home-page.png)
+
+### Recipe Feature Page
+
+![Lighthouse Report. Recipe Feature Page](documentation/lighthouse/feature-page.png)
+
+### Sign Up Page
+
+![Lighthouse Report. Sign Up Page](documentation/lighthouse/reg-page.png)
+
+### Sign In Page
+
+![Lighthouse Report. Sign In Page](documentation/lighthouse/signin-page.png)
+
+### Sign Out Page
+
+![Lighthouse Report. Sign Out Page](documentation/lighthouse/signout-page.png)
+
+---
 
 ## Responsiveness
+
+The responsiveness was checked manually by using devtools (Chrome) throughout the whole development. It was also checked with [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en) Chrome extension.
 
 ### Home Page
 
@@ -236,5 +274,23 @@ Usability was tested with the below user acceptance testing, sent to new users t
 
 ![Large Screen Sign Out Page](documentation/responsiveness/sign-out-bg.png)
 
+---
+
+## Compatibility
+
+Testing was conducted on the following browsers;
+
+- Chrome
+- Firefox
+- Safari
+
+![Chrome Home Page](documentation/compatibility/chrome-home.png)
+![Chrome Feature Page](documentation/compatibility/chrome-feature.png)
+
+![Firefox Home Page](documentation/compatibility/firefox-home.png)
+![Firefox Feature Page](documentation/compatibility/firefox-feature.png)
+
+![Safari Home Page](documentation/compatibility/safari-home.png)
+![Safari Feature Page](documentation/compatibility/safari-feature.png)
 
 

@@ -13,5 +13,3 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path("", include("recipe.urls"), name="recipe-urls"),
 ]
-
-
